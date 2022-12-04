@@ -16,6 +16,7 @@ public class App
             get("/",(req,res)->
             {
                 return "Root";
+                
             });
 
             get("/",(req,res)->{
