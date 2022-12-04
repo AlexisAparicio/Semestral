@@ -26,7 +26,7 @@ public class App
             // Pyramides pyramide = new Pyramides();
             // get("/",(req,res)->
             // {
-                
+
             //     res.type(ContentType:"application/json");
             //     // res.type(contentType:"application/json");
             //     JSONObject obj = new JSONObject(pyramides);
