@@ -1,6 +1,6 @@
 package com.hello;
 
-public class piramide {
+public class Car {
     String name;
     Integer year;
     

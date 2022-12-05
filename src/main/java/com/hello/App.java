@@ -8,32 +8,35 @@ import org.json.JSONObject;
  */
 public class App 
 {
-        public static void main(String[] args) {
-            // get("/wrx", (req, res) -> "Hola Mundo");
-           // post ("/wrx",(req,res)->"Hello");
-
+        public static void main(String[] args) 
+        {
+            Car obj = new Car();
+            obj.setName("Subaru WRX STI");
+            obj.setYear(2015);
+          
             //Devuelve algo en la pagina web
             get("/wrx",(req,res)->{
                 res.type("application/json");
-               return "{\"message\":\"Custom 500 handling\"}";
+                JSONObject jsonobj = new JSONObject(obj);
+               return jsonobj;
             });
 
             post("/wrx",(req,res)->{
                 res.type("application/json");
-               //return "{\"message\":\"Custom 500 handling\"}";
                return req.body();
             });
-
-            // {
-            //     return "Root";
-            // });
 
             get("/",(req,res)->{
             res.type("application/json");
             return "{\"message\":\"Custom 404\"}";
             });
 
-            // Pyramides pyramide = new Pyramides();
+        }
+    }
+    
+
+
+    // Pyramides pyramide = new Pyramides();
             // get("/",(req,res)->
             // {
 
@@ -43,8 +46,4 @@ public class App
             //     return obj;
                 
             // });
-
             // JSONObject body = new JSONObject(req.body());
-        }
-    }
-    
