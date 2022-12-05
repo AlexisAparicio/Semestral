@@ -10,27 +10,33 @@ public class App
 {
         public static void main(String[] args) 
         {
-            Car obj = new Car();
-            obj.setName("Subaru WRX STI");
-            obj.setYear(2015);
-          
+            // Car obj = new Car();
+            // obj.setName("Subaru WRX STI");
+            // obj.setYear(2015);
+
+            Cars objCars= new Cars();
+            // objCars.addCar(obj);
+            // objCars.addCar(obj);
+            // objCars.addCar(obj);
+            // objCars.addCar(obj);
+
             //Devuelve algo en la pagina web
             get("/wrx",(req,res)->{
                 res.type("application/json");
-                JSONObject jsonobj = new JSONObject(obj);
+                JSONObject jsonobj = new JSONObject(objCars);
                return jsonobj;
             });
 
             post("/wrx",(req,res)->{
                 res.type("application/json");
-               return req.body();
+                Car car = new Car();
+                JSONObject body = new JSONObject(req.body());
+                car.setName(body.getString("name"));
+                car.setYear(body.getInt("year"));
+                objCars.addCar(car);
+                JSONObject jsonobj= new JSONObject(objCars);
+               return jsonobj;
             });
-
-            get("/",(req,res)->{
-            res.type("application/json");
-            return "{\"message\":\"Custom 404\"}";
-            });
-
         }
     }
     
