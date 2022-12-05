@@ -9,14 +9,24 @@ import org.json.JSONObject;
 public class App 
 {
         public static void main(String[] args) {
-            get("/wrx", (req, res) -> "Hello World test try");
-            post ("/wrx",(req,res)->"Hello");
-            
+            // get("/wrx", (req, res) -> "Hola Mundo");
+           // post ("/wrx",(req,res)->"Hello");
+
             //Devuelve algo en la pagina web
-            get("/",(req,res)->
-            {
-                return "Root";
+            get("/wrx",(req,res)->{
+                res.type("application/json");
+               return "{\"message\":\"Custom 500 handling\"}";
             });
+
+            post("/wrx",(req,res)->{
+                res.type("application/json");
+               //return "{\"message\":\"Custom 500 handling\"}";
+               return req.body();
+            });
+
+            // {
+            //     return "Root";
+            // });
 
             get("/",(req,res)->{
             res.type("application/json");
