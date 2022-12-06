@@ -2,13 +2,9 @@ package com.hello;
 import static spark.Spark.*;
 import org.json.JSONObject;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class Semestral 
 {
-        public static void main(String[] args) 
+    public static void main(String[] args) 
         {
          options("/*",
         (request, response) -> {
@@ -32,32 +28,33 @@ public class App
 
 before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
-            Cars objCars= new Cars();
+            Piramides objPiramides= new Piramides();
          
 
             //Devuelve algo en la pagina web
-            get("/wrx",(req,res)->{
+            get("/Semestral",(req,res)->{
                 res.type("application/json");
-                JSONObject jsonobj = new JSONObject(objCars);
+                JSONObject jsonobj = new JSONObject(objPiramides);
                return jsonobj;
             });
 
-            get("/wrx/:id",(req,res)->{
+            get("/Semestral/:id",(req,res)->{
                 res.type("application/json");
-                JSONObject jsonobj = new JSONObject(objCars.getCars().get(Integer.parseInt(req.params(":id"))-1));
+                JSONObject jsonobj = new JSONObject(objPiramides.getPiramides().get(Integer.parseInt(req.params(":id"))-1));
                return jsonobj;
             });
 
-            post("/wrx",(req,res)->{
+            post("/Semestral",(req,res)->{
                 res.type("application/json");
-                Car car = new Car();
+                Piramide piramide = new Piramide();
                 JSONObject body = new JSONObject(req.body());
-                car.setId(objCars.cars.size()+1);
-                car.setName(body.getString("name"));
-                car.setYear(body.getInt("year"));
-                objCars.addCar(car);
-                JSONObject jsonobj= new JSONObject(objCars);
+                piramide.setId(objPiramides.piramides.size()+1);
+                piramide.setName(body.getString("name"));
+                piramide.setPiramide(body.getString("piramide"));
+                objPiramides.addPiramide(piramide);
+                JSONObject jsonobj= new JSONObject(objPiramides);
                return jsonobj;
             });
         }
-    }
+       
+}
